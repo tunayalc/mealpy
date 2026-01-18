@@ -39,6 +39,12 @@ For detailed updates in each new version, please refer to the [ChangeLog](/Chang
 
 This repository is a fork of `thieu1995/mealpy`.
 
+To install and try this fork (instead of the PyPI release):
+
+```sh
+pip install -U git+https://github.com/tunayalc/mealpy.git@master
+```
+
 Changes in this fork:
 - Added **Tree-Seed Algorithm** as `TSeedA` (do not confuse with the existing `TSA` = Tunicate Swarm Algorithm).
 - Added runnable examples:
