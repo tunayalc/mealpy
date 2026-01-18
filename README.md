@@ -35,6 +35,41 @@ For detailed updates in each new version, please refer to the [ChangeLog](/Chang
 * **Dependencies:** numpy, scipy, pandas, matplotlib, tqdm
 
 
+## Fork Notes (tunayalc)
+
+This repository is a fork of `thieu1995/mealpy`.
+
+Changes in this fork:
+- Added **Tree-Seed Algorithm** as `TSeedA` (do not confuse with the existing `TSA` = Tunicate Swarm Algorithm).
+- Added runnable examples:
+  - `examples/run_TSeedA_example.py`
+  - `examples/run_opfunu_name_based_rastrigin.py` (shows using `opfunu.name_based` as `obj_func`)
+- Added tests for `TSeedA`: `tests/bio_based/test_TSeedA.py`
+
+Companion fork:
+- `opfunu` fork with additional classic benchmarks (F1–F24) under `opfunu.name_based`: https://github.com/tunayalc/opfunu
+
+### Quick Usage: Tree-Seed Algorithm (TSeedA)
+
+```python
+import numpy as np
+from mealpy import FloatVar, TSeedA
+
+def objective_function(solution):
+    return np.sum(solution**2)
+
+problem_dict = {
+    "bounds": FloatVar(lb=(-10.0,) * 30, ub=(10.0,) * 30, name="delta"),
+    "minmax": "min",
+    "obj_func": objective_function,
+}
+
+model = TSeedA.OriginalTSeedA(epoch=1000, pop_size=50, st=0.1)
+g_best = model.solve(problem_dict, seed=10)
+print(g_best.target.fitness)
+```
+
+
 ## 📌 Goals
 
 Our goals are to implement all classical as well as the state-of-the-art nature-inspired algorithms, create a simple interface that helps researchers access optimization algorithms as quickly as possible, and share knowledge of the optimization field with everyone without a fee. What you can do with mealpy:
